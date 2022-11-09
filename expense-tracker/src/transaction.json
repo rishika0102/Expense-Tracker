@@ -1,0 +1,28 @@
+[
+  {
+    "id":1,
+    "type": "income",
+    "amount": "$68437",
+    "expense": "$300"
+  },
+  {
+    "id": 2,
+    "type": "income",
+    "amount": "$475389",
+    "expense": "$724"
+
+  },
+  {
+
+    "id": 3,
+    "type": "cash",
+    "amount": "$7980990",
+    "expense": "$9384"
+  },
+  {
+    "id": 4,
+    "type": "cash",
+    "amount": "$782948",
+    "expense": "3234"
+  }
+]

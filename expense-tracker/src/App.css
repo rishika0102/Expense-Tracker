@@ -1,0 +1,60 @@
+.app {
+  text-align: center;
+}
+
+.expense-container {
+  display: flex;
+  justify-content: center;
+  margin: 40px;
+}
+
+table, th, td {
+  border: 1px solid black;
+  margin-inline: auto;
+}
+
+.total-expense-heading {
+  margin: 5px;
+  box-shadow: 0px 6px 12px 1px rgba(199, 199, 199, 1);
+}
+
+.total-expense-heading .balance {
+  color: skyblue;
+}
+
+.total-expense-heading .amount {
+  color: green;
+}
+
+.total-expense-heading .expense {
+  color: red;
+}
+
+.transaction-form-container {
+  box-shadow: 0px 6px 12px 1px rgba(199, 199, 199, 1);
+  width:  470px;
+  max-width: 470px;
+  margin-inline:  auto;
+}
+
+.transaction-form-button {
+  margin:  32px 4px;
+  height:  48px;
+  width:  125px;
+  background-color: blue;
+  color:  white;
+  box-shadow:  0px 6px 12px 1px rgba(199, 199, 199, 1);
+  border-radius: 2px;
+}
+
+.transaction-history-container {
+  margin-inline:  auto;
+  overflow-y: scroll;
+  max-height: 246px;
+  max-width: 540px ;
+}
+
+.transaction-field {
+  height: 30px;
+  margin:  5px;
+}
