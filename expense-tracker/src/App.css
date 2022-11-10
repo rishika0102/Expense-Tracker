@@ -11,6 +11,7 @@
 table, th, td {
   border: 1px solid black;
   margin-inline: auto;
+  width: 600px;
 }
 
 .total-expense-heading {
@@ -48,10 +49,8 @@ table, th, td {
 }
 
 .transaction-history-container {
-  margin-inline:  auto;
-  overflow-y: scroll;
-  max-height: 246px;
-  max-width: 540px ;
+  margin-top: 20px;
+  text-align: center;
 }
 
 .transaction-field {

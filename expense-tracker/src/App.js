@@ -1,21 +1,20 @@
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import ExpenseTracker from './components/ExpenseTracker';
-import ExpenseTrackerForm from './components/ExpenseTrackerForm';
 import TransactionHistory from './components/TransactionHistory';
-import {
-    BrowserRouter as Router,
-    Routes,
-    Route,
-    Link
-} from 'react-router';
+
+import {Routes, Route} from "react-router-dom";
 
 function App() {
+
   return (
-    <div className="app">
-      <h1>Expense Tracker</h1>
-      <ExpenseTracker/>
-      <ExpenseTrackerForm />
-    </div>
+    <>
+      <Routes>
+        <Route path='/' element={<ExpenseTracker/>} />
+        <Route path='TransactionHistory' element={<TransactionHistory/>}/>
+      </Routes>
+    </>
   );
 }
 
