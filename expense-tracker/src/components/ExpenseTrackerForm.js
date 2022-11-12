@@ -1,28 +1,23 @@
-import React, {useState} from 'react';
+import React, {useState, Component} from 'react';
 import {ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { validName, validAmount } from './formValidate.js';
 import {uniqueId} from '../utils';
 import api from '../api/transaction';
-import {Button} from 'reactstrap';
-
-import {useNavigate} from "react-router-dom";
 
 function ExpenseTrackerForm() {
 
   const [name, setName] = useState();
+  const [type, setType] = useState();
   const [amount, setAmount] = useState();
-  const navigate = useNavigate();
-  const submitDetails = (e) => {
-    e.preventDefault();
-    console.log("submitted");
+  function submitDetails() {
+    debugger
+    if(!validAmount.test(amount)) {
+      console.log("submitted");
+    }
   }
 
-  const goToTransactionHistory = () => {
-    navigate('/TransactionHistory');
-  };
-
-  const addIncome = (e) => {
+  const addTransactionDetails = (e) => {
     if(!validName.test(name)) {
       toast.success("income name successfully added");
     } else {
@@ -30,7 +25,8 @@ function ExpenseTrackerForm() {
     }
     const transationDetail = {
       id: uniqueId(),
-      type: name,
+      name: name,
+      type: type,
       amount: parseInt(amount)
     };
     const response = api.post("/transaction", transationDetail);
@@ -48,29 +44,31 @@ function ExpenseTrackerForm() {
       <div className="transaction-form-container">
         <h2>Add New Transaction</h2>
         <div className="my-4">
-          <form onSubmit={(e) => submitDetails(e)}>
+          <form onSubmit={submitDetails}>
             <div className="transaction-field">
                <label>
                 Name
-                <input type="text" pattern="[a-zA-Z ]*$" value={name} onChange={(e) => setName(e.target.value)}/>
+                <input type="text" pattern="[a-zA-Z ]*$" value={name} required onChange={(e) => setName(e.target.value)}/>
+              </label>
+             </div>
+             <div className="transaction-field">
+               <label>
+                Type
+                <input type="text" pattern="[a-zA-Z ]*$" required value={type} onChange={(e) => setType(e.target.value)}/>
               </label>
              </div>
             <div className="transaction-field">
               <label>
                 Amount
-                <input type="number" max="9999999" value={amount} onChange={(e) => setAmount(e.target.value)}/>
+                <input type="number" validAmount={validAmount} required value={amount} onChange={(e) => setAmount(e.target.value)}/>
               </label>
              </div>
           </form>
-          <button className="transaction-form-button" onClick={(e) => addIncome(e)}>Add Income</button>
-          <button className="transaction-form-button" onClick={(e) => addExpense(e)}>Add Expense</button>
+          <button className="transaction-form-button" onClick={(e) => addTransactionDetails(e)}>Add Details</button>
           <button className="transaction-form-button" type="submit">Submit</button>
           <ToastContainer />
          </div>
       </div>
-      <Button className="btn-lg" color="primary" onClick={ () => goToTransactionHistory()}>
-          Click here for transaction history
-      </Button>
     </div>
   )
 }

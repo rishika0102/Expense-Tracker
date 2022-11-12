@@ -1,22 +1,29 @@
 import React, {useEffect, useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useLocation} from "react-router-dom";
 import {Button} from 'reactstrap';
-import api from '../api/transaction';
 
-function TransactionHistory() {
+
+function TransactionHistory({balanceDetails}) {
 
   const navigate = useNavigate();
-  const [transactionDetails, setTransactionDetails] = useState();
-  const getTransactionDetails = () => {
-    debugger
-    const response = api.get("/transaction");
-    setTransactionDetails(response.data);
-  };
+  const balance = useLocation();
+  const [balanceHistory, setBalanceHistory] = useState([]);
+  console.log("transationDetail from history", balance.state);
+  console.log("transationDetail from history", balanceHistory);
 
-  useEffect(() =>{
-    getTransactionDetails();
-  })
+  const edit = () => {
+    // balance.state.map((data)=>{
+    //   if(data.name) {
+
+    //   }
+    // })
+    console.log("editing");
+  }
+
+  const deleteTransaction = () => {
+    console.log("deleting");
+  }
 
   return (
     <div className="transaction-history-container">
@@ -24,19 +31,21 @@ function TransactionHistory() {
       <table>
         <tbody>
           <tr>
+            <th>Name</th>
             <th>Your Balance</th>
             <th>Amount</th>
             <th>Expense</th>
             <th>Edit</th>
             <th>Delete</th>
           </tr>
-          {transactionDetails?.map((transaction) =>
-            <tr>
-              <td>{transaction.id}</td>
-              <td>{transaction.amount}</td>
-              <td>{transaction.amount}</td>
-              <td><button type="button" className="btn btn-outline-dark btn-sm">Edit</button></td>
-              <td><button type="button" className="btn btn-outline-dark btn-sms">Delete</button></td>}
+          {balance.state.map( (data) =>
+            <tr key={data.id}>
+              <td>{data.name}</td>
+              <td>{data.balance}</td>
+              <td>{data.income}</td>
+              <td>{data.expense}</td>
+              <td><button type="button" className="btn btn-outline-dark btn-sm" onClick={edit}>Edit</button></td>
+              <td><button type="button" className="btn btn-outline-dark btn-sms" onClick={deleteTransaction}>Delete</button></td>
             </tr>
           )}
         </tbody>
