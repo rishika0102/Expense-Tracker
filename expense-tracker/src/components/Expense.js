@@ -3,7 +3,11 @@ import ExpenseTracker from "./ExpenseTracker";
 
 function Expense({transactionDetails, income, expense}) {
 
-  console.log("transationDetail from expense", transactionDetails);
+  console.log("transationDetail from expense", income, expense);
+  // const [transaction, setTransaction] = useState([]);
+
+  // setTransaction(transactionDetails);
+  // debugger
   // const [income, setIncome] = useState(0);
   // const [expense, setExpense] = useState(0);
 

@@ -21,11 +21,10 @@ function ExpenseTracker() {
   const [transactionDetails, setTransactionDetails] = useState();
   const [balanceDetails, setbalanceDetails] = useState([]);
 
-  const getTransactionDetails = () => {
+  const getTransactionDetails = async () => {
     return api.get("/transaction").then((response) =>
       setTransactionDetails(response.data)
     );
-    calculatedExpense();
   };
   const getBalanceDetails = () => {
     debugger
@@ -41,10 +40,11 @@ function ExpenseTracker() {
   };
 
   const calculatedExpense = () => {
+    console.log("transationDetail", transactionDetails);
     let income = 0, expense = 0, name="CurrentAccount";
     debugger
     transactionDetails.forEach((data) => {
-      console.log("data..", data);
+      // console.log("data..", data);
       if(data.type == 'income') {
         income = income + data.amount;
       } else if(data.type === 'expense') {
@@ -58,7 +58,6 @@ function ExpenseTracker() {
     debugger
     const balances = income - expense;
     debugger
-    getBalanceDetails();
     const balanceDetail = {
       id: uniqueId(),
       name: name,
@@ -73,13 +72,19 @@ function ExpenseTracker() {
   useEffect(() => {
     debugger
     getTransactionDetails();
-    // getBalanceDetails();
+    if(transactionDetails > 0) {
+      debugger
+     calculatedExpense();
+    }
+    getBalanceDetails();
+    console.log("income", income);
+    console.log("expense", expense);
   }, [])
 
   return (
     <div className="app">
       <h1>Expense Tracker</h1>
-      <Expense transactionDetails={transactionDetails} income={income} expense={expense} />
+      <Expense income={income} expense={expense} />
       <ExpenseTrackerForm/>
       <Button className="btn-lg" color="primary" onClick={ () => goToTransactionHistory()}>
           Click here for transaction history

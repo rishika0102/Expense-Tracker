@@ -23,6 +23,7 @@ function ExpenseTrackerForm() {
     } else {
       toast.error("Please Follow the Format");
     }
+    debugger
     const transationDetail = {
       id: uniqueId(),
       name: name,
