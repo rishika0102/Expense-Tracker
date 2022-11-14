@@ -18,7 +18,7 @@ function ExpenseTracker() {
   const [income, setIncome] = useState(0);
   const [expense, setExpense] = useState(0);
   const [name, setName] = useState(0);
-  const [transactionDetails, setTransactionDetails] = useState();
+  const [transactionDetails, setTransactionDetails] = useState([]);
   const [balanceDetails, setbalanceDetails] = useState([]);
 
   const getTransactionDetails = async () => {
@@ -26,23 +26,21 @@ function ExpenseTracker() {
       setTransactionDetails(response.data)
     );
   };
+
   const getBalanceDetails = () => {
-    debugger
     return api.get("/details").then((response) =>
       setbalanceDetails(response.data)
     );
   };
 
   const goToTransactionHistory = () => {
-    debugger
     calculatedExpense();
-    navigate('/TransactionHistory', {state: balanceDetails});
+    navigate('/transactionHistory', {state: balanceDetails});
   };
 
   const calculatedExpense = () => {
     console.log("transationDetail", transactionDetails);
     let income = 0, expense = 0, name="CurrentAccount";
-    debugger
     transactionDetails.forEach((data) => {
       // console.log("data..", data);
       if(data.type == 'income') {
@@ -51,13 +49,10 @@ function ExpenseTracker() {
         expense = expense + data.amount;
       }
     });
-    debugger
     setIncome(income);
     setExpense(expense);
     setName(name);
-    debugger
     const balances = income - expense;
-    debugger
     const balanceDetail = {
       id: uniqueId(),
       name: name,
@@ -70,10 +65,8 @@ function ExpenseTracker() {
   }
 
   useEffect(() => {
-    debugger
     getTransactionDetails();
-    if(transactionDetails > 0) {
-      debugger
+    if(transactionDetails) {
      calculatedExpense();
     }
     getBalanceDetails();
@@ -87,7 +80,7 @@ function ExpenseTracker() {
       <Expense income={income} expense={expense} />
       <ExpenseTrackerForm/>
       <Button className="btn-lg" color="primary" onClick={ () => goToTransactionHistory()}>
-          Click here for transaction history
+           Transaction history
       </Button>
     </div>
   )

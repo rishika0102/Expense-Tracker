@@ -8,20 +8,17 @@ function TransactionHistory({balanceDetails}) {
 
   const navigate = useNavigate();
   const balance = useLocation();
+  const [name, setName] = useState();
   const [balanceHistory, setBalanceHistory] = useState([]);
   console.log("transationDetail from history", balance.state);
   console.log("transationDetail from history", balanceHistory);
 
-  const edit = () => {
-    // balance.state.map((data)=>{
-    //   if(data.name) {
-
-    //   }
-    // })
-    console.log("editing");
+  const edit = (id) => {
+    console.log("editing", id);
   }
 
   const deleteTransaction = () => {
+
     console.log("deleting");
   }
 
@@ -44,7 +41,7 @@ function TransactionHistory({balanceDetails}) {
               <td>{data.balance}</td>
               <td>{data.income}</td>
               <td>{data.expense}</td>
-              <td><button type="button" className="btn btn-outline-dark btn-sm" onClick={edit}>Edit</button></td>
+              <td><button type="button" className="btn btn-outline-dark btn-sm" onClick={() => edit(data.id)}>Edit</button></td>
               <td><button type="button" className="btn btn-outline-dark btn-sms" onClick={deleteTransaction}>Delete</button></td>
             </tr>
           )}

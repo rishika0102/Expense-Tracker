@@ -10,20 +10,13 @@ function ExpenseTrackerForm() {
   const [name, setName] = useState();
   const [type, setType] = useState();
   const [amount, setAmount] = useState();
-  function submitDetails() {
-    debugger
-    if(!validAmount.test(amount)) {
-      console.log("submitted");
-    }
-  }
 
   const addTransactionDetails = (e) => {
     if(!validName.test(name)) {
-      toast.success("income name successfully added");
+      toast.success("Income Name Successfully Added");
     } else {
       toast.error("Please Follow the Format");
     }
-    debugger
     const transationDetail = {
       id: uniqueId(),
       name: name,
@@ -31,6 +24,7 @@ function ExpenseTrackerForm() {
       amount: parseInt(amount)
     };
     const response = api.post("/transaction", transationDetail);
+    // newTransaction(transationDetail);
     console.log("transationDetail...", transationDetail);
   }
 
@@ -61,12 +55,11 @@ function ExpenseTrackerForm() {
             <div className="transaction-field">
               <label>
                 Amount
-                <input type="number" validAmount={validAmount} required value={amount} onChange={(e) => setAmount(e.target.value)}/>
+                <input type="number" required value={amount} onChange={(e) => setAmount(e.target.value)}/>
               </label>
              </div>
           </form>
           <button className="transaction-form-button" onClick={(e) => addTransactionDetails(e)}>Add Details</button>
-          <button className="transaction-form-button" type="submit">Submit</button>
           <ToastContainer />
          </div>
       </div>

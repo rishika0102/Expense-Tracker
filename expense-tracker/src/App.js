@@ -12,7 +12,7 @@ function App() {
     <>
       <Routes>
         <Route path='/' element={<ExpenseTracker/>} />
-        <Route path='TransactionHistory' element={<TransactionHistory/>}/>
+        <Route path='transactionHistory' element={<TransactionHistory/>}/>
       </Routes>
     </>
   );
