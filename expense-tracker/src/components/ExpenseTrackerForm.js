@@ -1,4 +1,4 @@
-import React, {useState, Component} from 'react';
+import React, {useState} from 'react';
 import {ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { validName, validAmount } from './formValidate.js';
@@ -12,6 +12,8 @@ function ExpenseTrackerForm() {
   const [amount, setAmount] = useState();
 
   const addTransactionDetails = (e) => {
+    debugger
+    console.log("type", type);
     if(!validName.test(name)) {
       toast.success("Income Name Successfully Added");
     } else {
@@ -26,12 +28,13 @@ function ExpenseTrackerForm() {
     const response = api.post("/transaction", transationDetail);
     // newTransaction(transationDetail);
     console.log("transationDetail...", transationDetail);
+    setName("");
+    setType("choose from drop-down")
+    setAmount("");
   }
 
-  const addExpense = (type, e) => {
-    debugger
-    console.log("type, e", type, e);
-    toast.success("expense deduct");
+  const getType = (e) => {
+    setType(e.target.value);
   }
 
   return (
@@ -39,7 +42,7 @@ function ExpenseTrackerForm() {
       <div className="transaction-form-container">
         <h2>Add New Transaction</h2>
         <div className="my-4">
-          <form onSubmit={submitDetails}>
+          <form>
             <div className="transaction-field">
                <label>
                 Name
@@ -49,7 +52,11 @@ function ExpenseTrackerForm() {
              <div className="transaction-field">
                <label>
                 Type
-                <input type="text" pattern="[a-zA-Z ]*$" required value={type} onChange={(e) => setType(e.target.value)}/>
+                <select className="drop-down" value={type} onChange={getType}>
+                  <option value="choose from drop-down">Choose from dropdown</option>
+                  <option value="income">income</option>
+                  <option value="expense">expense</option>
+                </select>
               </label>
              </div>
             <div className="transaction-field">

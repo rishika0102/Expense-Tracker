@@ -53,6 +53,11 @@ table, th, td {
   text-align: center;
 }
 
+.drop-down {
+  height: 30px;
+  width:  240px;
+}
+
 .transaction-field {
   height: 30px;
   margin:  5px;
