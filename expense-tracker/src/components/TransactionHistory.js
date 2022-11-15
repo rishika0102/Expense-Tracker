@@ -7,7 +7,6 @@ import api from '../api/transaction';
 const item = [{id: null , editing: false}];
 
 function TransactionHistory() {
-  debugger
   const navigate = useNavigate();
   const balance = useLocation();
   const [name, setName] = useState();
@@ -16,11 +15,11 @@ function TransactionHistory() {
   const [expense, setExpense] = useState(0);
   const [editing, setEditing] = useState(false);
   const [balanceHistory, setBalanceHistory] = useState([]);
-  // console.log("transationDetail from history", balance.state);
-  console.log("transationDetail from history", balanceHistory);
+  console.log("transationDetail from history", balance.state);
+  // console.log("transationDetail from history", balanceHistory);
 
    const getBalanceDetails = () => {
-    // debugger
+    debugger
     return api.get("/details").then((response) =>
       setBalanceHistory(response.data)
     );
@@ -86,8 +85,8 @@ function TransactionHistory() {
           {balanceHistory.map( (data) =>
             <tr key={data.id}>
               <td>{ editing ? <input value={name} onChange={ (e) => editField(e.target.value, data.id, data) }/> : <span>{data.name}</span>}</td>
-              <td>{data.calculatedbalance}</td>
-              <td>{data.income}</td>
+              <td>{data.balance}</td>
+              <td>{data.Amount}</td>
               <td>{data.expense}</td>
               <td><button type="button" className="btn btn-outline-dark btn-sm" onClick={() => edit(data.id)}>Edit</button></td>
               <td><button type="button" className="btn btn-outline-dark btn-sms" onClick={() => deleteTransaction(data.id)}>Delete</button></td>

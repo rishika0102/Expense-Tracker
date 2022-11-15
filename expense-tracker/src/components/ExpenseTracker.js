@@ -19,28 +19,42 @@ function ExpenseTracker() {
   const [expense, setExpense] = useState(0);
   const [transactionDetails, setTransactionDetails] = useState([]);
   const [balanceDetails, setbalanceDetails] = useState([]);
+  const [amount, setAmount] = useState(0);
 
   const goToTransactionHistory = () => {
-    navigate('/transactionHistory', {state: balanceDetails});
+    debugger
+    navigate('/transactionHistory');
   };
 
-  const handleTransaction = (transaction) => {
+  const handleTransaction = (transaction, amount) => {
     debugger
-    let income = 0, expense = 0;
+    let income = 0, expense = 0, newAmount=0, newName=0;
     transaction.forEach((data) => {
       if(data.type === "income") {
        income+=data.amount;
+       newAmount = data.amount;
+       newName = data.name;
       } else {
         expense = income - data.amount;
       }
     })
     setIncome(income);
     setExpense(expense);
+    const balanceDetail = {
+      id: transactionId(),
+      name: newName,
+      balance: income - expense,
+      Amount: newAmount,
+      expense: expense
+   }
+    debugger
+    setbalanceDetails(balanceDetail);
+    const response = api.post("/details", balanceDetail);
+    // setbalanceDetails(response.data);
+    console.log("baalcne details",balanceDetails);
   }
-
   useEffect(() => {
-    console.log("income", income);
-    console.log("expense", expense);
+
   }, [])
 
   return (

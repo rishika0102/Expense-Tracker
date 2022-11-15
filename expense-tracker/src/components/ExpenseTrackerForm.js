@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { validName, validAmount } from './formValidate.js';
@@ -13,7 +13,6 @@ function ExpenseTrackerForm({transactions}) {
   const [income, setIncome] = useState(0);
   const [expense, setExpense] = useState(0);
   const [balances , setBalances] = useState(0);
-  const [prevIncome, setPrevIncome] = useState(0);
   const [transactionDetails, setTransactionDetails] = useState([]);
 
   const addTransactionDetails = (e) => {
