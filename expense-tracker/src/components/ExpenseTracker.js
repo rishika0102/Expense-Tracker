@@ -40,6 +40,11 @@ function ExpenseTracker() {
     })
     setIncome(income);
     setExpense(expense);
+    const transationDetail = {
+      income: income,
+      expense: expense
+    }
+    setTransactionDetails(transationDetail);
     const balanceDetail = {
       id: transactionId(),
       name: newName,
@@ -53,9 +58,19 @@ function ExpenseTracker() {
     // setbalanceDetails(response.data);
     console.log("baalcne details",balanceDetails);
   }
-  useEffect(() => {
 
+  useEffect(()=> {
+    debugger
+    const saveIncomeValue = window.localStorage.getItem('saveIncomeStates');
+    const saveExpenseValue = window.localStorage.getItem('saveExpenseStates');
+    setIncome(JSON.parse(saveIncomeValue));
+    setExpense(JSON.parse(saveExpenseValue));
   }, [])
+
+  useEffect(() => {
+    window.localStorage.setItem('saveIncomeStates',JSON.stringify(income));
+    window.localStorage.setItem('saveExpenseStates',JSON.stringify(expense));
+  });
 
   return (
     <div className="app">
