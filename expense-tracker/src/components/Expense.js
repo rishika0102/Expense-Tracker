@@ -1,35 +1,41 @@
 import React,{useState, useEffect} from 'react';
 import ExpenseTracker from "./ExpenseTracker";
+import api from '../api/transaction';
 
-function Expense({transactionDetails, income, expense}) {
+function Expense({income, expense}) {
 
-  console.log("transationDetail from expense", income, expense);
-  // const [transaction, setTransaction] = useState([]);
-
-  // setTransaction(transactionDetails);
-  // debugger
+  const [transactionDetails, setTransactionDetails] = useState([]);
+  console.log("income", income);
+  console.log("expense", expense);
   // const [income, setIncome] = useState(0);
   // const [expense, setExpense] = useState(0);
 
+  // const getTransactionDetails = async () => {
+  //   debugger
+  //   return api.get("/transaction").then((response) =>
+  //     setTransactionDetails(response.data)
+  //   );
+  //   console.log("transationDetail", transactionDetails);
+  // };
+
   // const calculatedExpense = () => {
-  //   let income = 0, expense = 0;
+  //   debugger
+  //   console.log("transationDetail", transactionDetails);
+  //   let income = 0, expense = 0, name="";
   //   transactionDetails.forEach((data) => {
-  //     if(data.type !== 'expense') {
-  //       debugger
+  //     console.log("data..", data);
+  //     if(data.type == 'income') {
   //       income = income + data.amount;
   //     } else if(data.type === 'expense') {
   //       expense = expense + data.amount;
-  //       setExpense(expense)
   //     }
   //   });
   //   setIncome(income);
   //   setExpense(expense);
   // }
-
   // useEffect(() => {
-  //   if(transactionDetails.length > 0) {
-  //    calculatedExpense();
-  //   }
+  //   getTransactionDetails();
+  //   calculatedExpense();
   // }, [])
 
   return (

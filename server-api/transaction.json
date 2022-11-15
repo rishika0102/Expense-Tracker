@@ -1,83 +1,17 @@
 {
   "transaction": [
     {
-      "id": 9361,
-      "name": "cash",
-      "amount": 500000
+      "id": 1398,
+      "name": "hjfhhgre",
+      "type": "income",
+      "amount": 4894754
     },
     {
-      "id": 8099,
-      "name": "cash",
-      "amount": 46666
-    },
-    {
-      "id": 9121,
+      "id": 5087,
       "name": "cash",
       "type": "income",
-      "amount": 58768785
-    },
-    {
-      "id": 772,
-      "name": "cash",
-      "type": "income",
-      "amount": 5660000
-    },
-    {
-      "id": 3795,
-      "name": "cash",
-      "type": "expense",
-      "amount": 6000
+      "amount": 348345
     }
   ],
-  "details": [
-    {
-      "id": 483,
-      "name": "CurrentAccount",
-      "balance": 58768785,
-      "income": 58768785,
-      "expense": 0
-    },
-    {
-      "id": 5898,
-      "name": "CurrentAccount",
-      "balance": 0,
-      "income": 0,
-      "expense": 0
-    },
-    {
-      "id": 9993,
-      "name": "CurrentAccount",
-      "balance": 64428785,
-      "income": 64428785,
-      "expense": 0
-    },
-    {
-      "id": 6694,
-      "name": "CurrentAccount",
-      "balance": 0,
-      "income": 0,
-      "expense": 0
-    },
-    {
-      "id": 5827,
-      "name": "CurrentAccount",
-      "balance": 64428785,
-      "income": 64428785,
-      "expense": 0
-    },
-    {
-      "id": 4340,
-      "name": "CurrentAccount",
-      "balance": 0,
-      "income": 0,
-      "expense": 0
-    },
-    {
-      "id": 4290,
-      "name": "CurrentAccount",
-      "balance": 0,
-      "income": 0,
-      "expense": 0
-    }
-  ]
+  "details": []
 }

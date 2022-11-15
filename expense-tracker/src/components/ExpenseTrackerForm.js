@@ -1,15 +1,20 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { validName, validAmount } from './formValidate.js';
-import {uniqueId} from '../utils';
+import {transactionId} from '../utils';
 import api from '../api/transaction';
 
-function ExpenseTrackerForm() {
+function ExpenseTrackerForm({transactions}) {
 
   const [name, setName] = useState();
   const [type, setType] = useState();
   const [amount, setAmount] = useState();
+  const [income, setIncome] = useState(0);
+  const [expense, setExpense] = useState(0);
+  const [balances , setBalances] = useState(0);
+  const [prevIncome, setPrevIncome] = useState(0);
+  const [transactionDetails, setTransactionDetails] = useState([]);
 
   const addTransactionDetails = (e) => {
     debugger
@@ -20,14 +25,13 @@ function ExpenseTrackerForm() {
       toast.error("Please Follow the Format");
     }
     const transationDetail = {
-      id: uniqueId(),
+      id: transactionId(),
       name: name,
       type: type,
       amount: parseInt(amount)
     };
     const response = api.post("/transaction", transationDetail);
-    // newTransaction(transationDetail);
-    console.log("transationDetail...", transationDetail);
+    getTransactionDetails();
     setName("");
     setType("choose from drop-down")
     setAmount("");
@@ -35,6 +39,12 @@ function ExpenseTrackerForm() {
 
   const getType = (e) => {
     setType(e.target.value);
+  }
+
+  const getTransactionDetails = () => {
+     return api.get("/transaction").then((response) =>
+      transactions(response.data)
+    );
   }
 
   return (
