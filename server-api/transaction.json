@@ -117,24 +117,9 @@
   ],
   "details": [
     {
-      "id": 5163,
-      "name": 0,
-      "balance": 0,
-      "Amount": 0,
-      "expense": 0
-    },
-    {
-      "id": 5754,
-      "name": "uiyutu",
-      "balance": 888565796,
-      "Amount": 777899,
-      "expense": 0
-    },
-    {
       "id": 1502,
-      "name": "uiyutu",
-      "balance": 888565796,
-      "Amount": 777899,
+      "name": "k",
+      "income": 0,
       "expense": 0
     },
     {
@@ -180,13 +165,6 @@
       "expense": 902313751
     },
     {
-      "id": 7890,
-      "name": "hkgh",
-      "balance": null,
-      "Amount": 79868,
-      "expense": null
-    },
-    {
       "id": 6949,
       "name": "hkgh",
       "balance": 80656,
@@ -212,13 +190,6 @@
       "name": "hjhkjj",
       "balance": 8126418,
       "Amount": 78797,
-      "expense": 918818236
-    },
-    {
-      "id": 1712,
-      "name": "nmnknkh",
-      "balance": 107111883,
-      "Amount": 98985465,
       "expense": 918818236
     },
     {

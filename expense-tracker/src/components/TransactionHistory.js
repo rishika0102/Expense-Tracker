@@ -14,6 +14,7 @@ function TransactionHistory() {
   const [income, setIncome] = useState(0);
   const [expense, setExpense] = useState(0);
   const [editing, setEditing] = useState(false);
+  const [editElement, setEditElement] = useState(0);
   const [balanceHistory, setBalanceHistory] = useState([]);
   console.log("transationDetail from history", balance.state);
   // console.log("transationDetail from history", balanceHistory);
@@ -26,17 +27,9 @@ function TransactionHistory() {
     console.log("details");
   };
 
-  const edit = (id) => {
-    // debugger
-    console.log("balance history", balanceHistory);
-    balanceHistory.map((data) => {
-      if(data.id == id) {
-        item.editing = true
-      }
-      console.log("editing", data.editing);
-       // item.editing = true;
-    })
-    // console.log("editing", data.editing);
+  const edit = (id, data) => {
+    debugger
+    setEditElement(id);
   }
 
   const editField = (e, id, data)  => {
@@ -54,6 +47,7 @@ function TransactionHistory() {
     }
     console.log("editDetails", editDetails);
     const response = api.put(`/details/${id}`, editDetails);
+    getBalanceDetails();
   }
 
   const deleteTransaction = (id) => {
@@ -62,10 +56,10 @@ function TransactionHistory() {
     const updatedDetails = balanceHistory.filter((balanceHistory)=>{
       return balanceHistory.id != id;
     })
+    getBalanceDetails();
   }
 
   useEffect(()=> {
-    // debugger
     getBalanceDetails();
   }, [])
 
@@ -84,7 +78,7 @@ function TransactionHistory() {
           </tr>
           {balanceHistory.map( (data) =>
             <tr key={data.id}>
-              <td>{ editing ? <input value={name} onChange={ (e) => editField(e.target.value, data.id, data) }/> : <span>{data.name}</span>}</td>
+              <td>{ editElement===data.id ? <input value={name} onChange={ (e) => editField(e.target.value, data.id, data) }/> : <span>{data.name}</span>}</td>
               <td>{data.balance}</td>
               <td>{data.Amount}</td>
               <td>{data.expense}</td>

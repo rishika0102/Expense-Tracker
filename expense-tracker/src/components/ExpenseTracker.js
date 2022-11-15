@@ -22,12 +22,10 @@ function ExpenseTracker() {
   const [amount, setAmount] = useState(0);
 
   const goToTransactionHistory = () => {
-    debugger
     navigate('/transactionHistory');
   };
 
   const handleTransaction = (transaction, amount) => {
-    debugger
     let income = 0, expense = 0, newAmount=0, newName=0;
     transaction.forEach((data) => {
       if(data.type === "income") {
