@@ -1,9 +1,11 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { validName, validAmount } from './formValidate.js';
 import {transactionId} from '../utils';
 import api from '../api/transaction';
+import usePrevious from '../Hooks/usePrevious';
+
 
 function ExpenseTrackerForm({transactions}) {
 
@@ -12,16 +14,20 @@ function ExpenseTrackerForm({transactions}) {
   const [amount, setAmount] = useState();
   const [income, setIncome] = useState(0);
   const [expense, setExpense] = useState(0);
-  const [balances , setBalances] = useState(0);
+  // var [balance , setBalances] = useState(0);
   const [transactionDetails, setTransactionDetails] = useState([]);
+
+  // const prevIncome = usePrevious(balance);
+  // console.log("previous", prevIncome);
 
   const addTransactionDetails = (e) => {
     debugger
+    let balances = 0;
     console.log("type", type);
     if(!validName.test(name)) {
-      toast.success("Income Name Successfully Added");
+      toast.error("Income Name Successfully Added");
     } else {
-      toast.error("Please Follow the Format");
+      toast.success("Please Follow the Format");
     }
     const transationDetail = {
       id: transactionId(),
@@ -29,6 +35,10 @@ function ExpenseTrackerForm({transactions}) {
       type: type,
       amount: parseInt(amount)
     };
+    debugger
+    setAmount(transationDetail.amount);
+    console.log("income froooomm expense", income);
+    // transactions(transationDetail);
     const response = api.post("/transaction", transationDetail);
     getTransactionDetails();
     setName("");
@@ -46,6 +56,16 @@ function ExpenseTrackerForm({transactions}) {
     );
   }
 
+
+  function onChange(e) {
+    debugger
+    var maxlen = 9;
+    if(e.target.value.length > maxlen) {
+      setAmount("");
+      toast.error("Please Follow the Format");
+    }
+  }
+
   return (
     <div>
       <div className="transaction-form-container">
@@ -55,7 +75,7 @@ function ExpenseTrackerForm({transactions}) {
             <div className="transaction-field">
                <label>
                 Name
-                <input type="text" pattern="[a-zA-Z ]*$" value={name} required onChange={(e) => setName(e.target.value)}/>
+                <input type="text" value={name} required onChange={(e) => setName(e.target.value)}/>
               </label>
              </div>
              <div className="transaction-field">

@@ -1,4 +1,5 @@
 export const validName = new RegExp(
-   "^([a-zA-Z])$"
+   '/^[A-Za-z]+$/'
 );
-export const validAmount = new RegExp('^(?=.*?[0-9]).{5,}$');
+
+// export const validAmount = new RegExp('[0-9]).{9,}$');

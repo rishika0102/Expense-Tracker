@@ -16,24 +16,18 @@ function TransactionHistory() {
   const [editing, setEditing] = useState(false);
   const [editElement, setEditElement] = useState(0);
   const [balanceHistory, setBalanceHistory] = useState([]);
-  console.log("transationDetail from history", balance.state);
-  // console.log("transationDetail from history", balanceHistory);
 
    const getBalanceDetails = () => {
-    debugger
     return api.get("/details").then((response) =>
       setBalanceHistory(response.data)
     );
-    console.log("details");
   };
 
   const edit = (id, data) => {
-    debugger
     setEditElement(id);
   }
 
   const editField = (e, id, data)  => {
-    debugger
     console.log("data", data);
     setIncome(data.income);
     setExpense(data.expense);
@@ -45,13 +39,11 @@ function TransactionHistory() {
       income: income,
       expense: expense
     }
-    console.log("editDetails", editDetails);
     const response = api.put(`/details/${id}`, editDetails);
     getBalanceDetails();
   }
 
   const deleteTransaction = (id) => {
-    debugger
     const response = api.delete(`/details/${id}`);
     const updatedDetails = balanceHistory.filter((balanceHistory)=>{
       return balanceHistory.id != id;
