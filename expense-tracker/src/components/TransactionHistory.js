@@ -28,18 +28,16 @@ function TransactionHistory() {
   }
 
   const editField = (e, id, data)  => {
-    console.log("data", data);
-    setIncome(data.income);
-    setExpense(data.expense);
-    setCalculatedBalance(data.calculatedbalance);
+    debugger
     const editDetails = {
       id: id,
       name: e,
-      calculatedbalance: calculatedbalance,
-      income: income,
-      expense: expense
+      balance: data.balance,
+      Amount: data.Amount,
+      expense: data.expense
     }
     const response = api.put(`/details/${id}`, editDetails);
+    setEditElement(id-1);
     getBalanceDetails();
   }
 
@@ -70,7 +68,7 @@ function TransactionHistory() {
           </tr>
           {balanceHistory.map( (data) =>
             <tr key={data.id}>
-              <td>{ editElement===data.id ? <input value={name} onChange={ (e) => editField(e.target.value, data.id, data) }/> : <span>{data.name}</span>}</td>
+              <td>{ editElement===data.id ? <input value={name}  className="edit-name-field" onChange={ (e) => editField(e.target.value, data.id, data) }/> : <span>{data.name}</span>}</td>
               <td>{data.balance}</td>
               <td>{data.Amount}</td>
               <td>{data.expense}</td>

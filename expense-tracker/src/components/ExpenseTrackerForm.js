@@ -13,17 +13,10 @@ function ExpenseTrackerForm({transactions}) {
   const [type, setType] = useState();
   const [amount, setAmount] = useState();
   const [income, setIncome] = useState(0);
-  const [expense, setExpense] = useState(0);
-  // var [balance , setBalances] = useState(0);
   const [transactionDetails, setTransactionDetails] = useState([]);
 
-  // const prevIncome = usePrevious(balance);
-  // console.log("previous", prevIncome);
-
   const addTransactionDetails = (e) => {
-    debugger
     let balances = 0;
-    console.log("type", type);
     if(!validName.test(name)) {
       toast.error("Income Name Successfully Added");
     } else {
@@ -35,10 +28,8 @@ function ExpenseTrackerForm({transactions}) {
       type: type,
       amount: parseInt(amount)
     };
-    debugger
     setAmount(transationDetail.amount);
     console.log("income froooomm expense", income);
-    // transactions(transationDetail);
     const response = api.post("/transaction", transationDetail);
     getTransactionDetails();
     setName("");
@@ -58,7 +49,6 @@ function ExpenseTrackerForm({transactions}) {
 
 
   function onChange(e) {
-    debugger
     var maxlen = 9;
     if(e.target.value.length > maxlen) {
       setAmount("");

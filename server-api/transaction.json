@@ -4,41 +4,87 @@
       "id": 4486,
       "name": "hffkg",
       "type": "income",
-      "amount": 80493594
+      "amount": 80493
     },
     {
-      "id": 6721,
-      "name": "rei",
+      "id": 2245,
+      "name": "trrrrrwyt",
       "type": "income",
-      "amount": 90850483
+      "amount": 1233434
     },
     {
-      "id": 1387,
-      "name": "hhr",
-      "type": "expense",
-      "amount": 74985
+      "id": 7223,
+      "name": "jkjrgt",
+      "type": "income",
+      "amount": 3000
     },
     {
-      "id": 6116,
-      "name": "dbfkj",
+      "id": 4087,
+      "name": "jhjhj",
+      "type": "income",
+      "amount": 980989
+    },
+    {
+      "id": 2892,
+      "name": "hljh",
       "type": "expense",
-      "amount": 8983
+      "amount": 60000
+    },
+    {
+      "id": 6845,
+      "name": "cash",
+      "type": "income",
+      "amount": 59999
+    },
+    {
+      "id": 4683,
+      "name": "tryt",
+      "type": "income",
+      "amount": 2000
     }
   ],
   "details": [
     {
-      "id": 2510,
-      "name": "rei",
-      "balance": 171344077,
-      "Amount": 90850483,
+      "id": 1063,
+      "name": "g",
+      "balance": 80493,
+      "Amount": 80493,
       "expense": 0
     },
     {
-      "id": 1866,
-      "name": "hhr",
-      "balance": 171269092,
-      "Amount": 90850483,
-      "expense": 74985
+      "id": 3346,
+      "name": "jkjrgt",
+      "balance": 1316927,
+      "Amount": 3000,
+      "expense": 0
+    },
+    {
+      "id": 1247,
+      "name": "jhjhj",
+      "balance": 2297916,
+      "Amount": 980989,
+      "expense": 0
+    },
+    {
+      "id": 4441,
+      "name": "hljh",
+      "balance": 2237916,
+      "Amount": 0,
+      "expense": 60000
+    },
+    {
+      "id": 670,
+      "name": "cash",
+      "balance": 2297915,
+      "Amount": 59999,
+      "expense": 0
+    },
+    {
+      "id": 3519,
+      "name": "tryt",
+      "balance": 2299915,
+      "Amount": 2000,
+      "expense": 0
     }
   ]
 }

@@ -76,3 +76,10 @@ table, th, td {
   height: 30px;
   margin:  5px;
 }
+
+.edit-name-field {
+  height: 28px;
+  width:  79px;
+  max-width: 80px;
+  max-height: 30px;
+}
